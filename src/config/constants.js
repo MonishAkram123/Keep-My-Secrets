@@ -31,7 +31,11 @@ export const form_constants = {
 
   LABEL_SECRET_TITLE: 'Title',
   SECRET_TITLE_FIELD_ID: 'title'
+}
 
+export const action_constants = {
 
-
+  CREATE_SECRET: 'CREATE_SECRET',
+  CREAT_SECRET_ERROR: 'CREATE_SECRET_ERROR'
+  
 }

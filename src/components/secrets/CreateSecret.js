@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { form_constants } from '../../config/constants'
+import { form_constants, path_constants } from '../../config/constants'
+import { connect } from 'react-redux'
+import { createSecret } from '../../store/actions/secretActions'
 class CreateSecret extends Component {
   state = {
+    secretTitle: '',
     fields: [
       { id: 1, name: 'field1_name', value: 'field1_value' }
-    ],
-    secretTitle: ''
+    ]
   }
 
   addField = (e) => {
@@ -33,18 +35,19 @@ class CreateSecret extends Component {
     e.preventDefault();
     let secret = {
       title: '',
-      secretFields: []
+      fields: []
     }
     const { fields } = this.state
     fields.map( field => {
       let id = field.id
       let name = document.getElementById(field.name).value
       let value = document.getElementById(field.value).value
-      secret.secretFields.push({ id, name, value })
+      secret.fields.push({ id, name, value })
       return null
     })
     secret.title = document.getElementById('title').value
-    console.log(secret)
+    this.props.createSecret(secret);
+    this.props.history.push(path_constants.DASHBOARD_PATH)
   }
 
   render() {
@@ -98,4 +101,10 @@ class CreateSecret extends Component {
   }
 }
 
-export default CreateSecret
+const mapDispatchToProps = dispatch => {
+  return {
+    createSecret: (secret) => dispatch(createSecret(secret))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(CreateSecret)

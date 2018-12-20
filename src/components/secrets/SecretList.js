@@ -1,22 +1,11 @@
 import React, { Component } from 'react'
 import SecretSummary from './SecretSummary'
 import { Collapsible, CollapsibleItem, Row, Col } from 'react-materialize'
+import { connect } from 'react-redux'
 class SecretList extends Component {
-  state = {
-    secrets: [
-      { id: '1', title: 'Gmail', fields: [
-        { id: '1', name: 'email', value: 'monishakram123@gmail.com' },
-        { id: '2', name: 'password', value: 'akram12345' }
-      ]},
-      { id: '2', title: 'Github', fields: [
-        { id: '1', name: 'username', value: 'MonishAkram123' },
-        { id: '2', name: 'password', value: '12345' },
-        { id: '3', name: 'phone_no', value: '9161759716' }
-      ]}
-    ]
-  }
+
   render() {
-    const { secrets } = this.state
+    const { secrets } = this.props
     const secretList = secrets.length ? (
         <Collapsible popout >
           {
@@ -44,4 +33,9 @@ class SecretList extends Component {
   }
 }
 
-export default SecretList
+const mapStateToProps = (state) => {
+  return {
+     secrets: state.secret.secrets
+  }
+}
+export default connect(mapStateToProps)(SecretList)
