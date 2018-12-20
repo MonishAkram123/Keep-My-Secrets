@@ -7,7 +7,8 @@ export const path_constants = {
   SIGNIN_PATH: '/signin',
   SIGNOUT_PATH: '/signout',
   SIGNUP_PATH: '/signup',
-  PROFILE_PATH: '/profile/:profile_id'
+  PROFILE_PATH: '/profile/:profile_id',
+  CREATE_SECRET_PATH: '/create'
 }
 
 export const form_constants = {
@@ -26,7 +27,11 @@ export const form_constants = {
   LASTNAME_FIELD_ID: 'last_name',
 
   LABEL_PHONE: 'Phone Number',
-  PHONE_FIELD_ID: 'phone_no'
+  PHONE_FIELD_ID: 'phone_no',
+
+  LABEL_SECRET_TITLE: 'Title',
+  SECRET_TITLE_FIELD_ID: 'title'
+
 
 
 }
