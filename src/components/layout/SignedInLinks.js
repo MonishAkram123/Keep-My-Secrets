@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
 import { path_constants } from '../../config/constants'
 const SignedInLinks = (props) => {
-  const { SIGNOUT_PATH, PROFILE_PATH, CREATE_SECRET_PATH } = path_constants
+  const { PROFILE_PATH, CREATE_SECRET_PATH } = path_constants
   return (
     <ul className="right">
       <li><NavLink to= { CREATE_SECRET_PATH }>+Add Secret</NavLink></li>

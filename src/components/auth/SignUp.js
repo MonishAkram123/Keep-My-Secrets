@@ -25,7 +25,7 @@ class SignUp extends Component {
   }
 
   handleChange = e => {
-    let state = { ...state }
+    let state = {  }
     state[e.target.id] = e.target.value
     this.setState({ ...state })
   }
@@ -48,7 +48,6 @@ class SignUp extends Component {
 
   render() {
     const { AUTH, SIGNUP_ERROR } = this.props
-    const { wrongPassword } = this.state
     if( AUTH.uid )
       return <Redirect to={ path_constants.DASHBOARD_PATH } />
     return (
@@ -103,7 +102,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
-  console.log('SignUp:', state)
   return {
     SIGNUP_ERROR: state.auth.SIGNUP_ERROR,
     AUTH: state.firebase.auth

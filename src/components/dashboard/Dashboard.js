@@ -1,9 +1,16 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import SecretList from '../secrets/SecretList'
-const Dashboard = () => {
-  return (
-    <SecretList />
-  )
+const Dashboard = ({ auth }) => {
+  if(auth.uid)
+    return <SecretList auth={ auth } />
+  else
+    return <h4>Login First</h4>
 }
 
-export default Dashboard
+const mapStateToProps = state => {
+  return {
+    auth: state.firebase.auth
+  }
+}
+export default connect(mapStateToProps)(Dashboard)

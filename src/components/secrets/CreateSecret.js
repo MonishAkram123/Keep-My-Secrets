@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { form_constants, path_constants } from '../../config/constants'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { createSecret } from '../../store/actions/secretActions'
 class CreateSecret extends Component {
@@ -46,7 +47,7 @@ class CreateSecret extends Component {
       return null
     })
     secret.title = document.getElementById('title').value
-    this.props.createSecret(secret);
+    this.props.createSecret(secret, this.props.auth.uid );
     this.props.history.push(path_constants.DASHBOARD_PATH)
   }
 
@@ -55,6 +56,8 @@ class CreateSecret extends Component {
       LABEL_SECRET_TITLE,
       SECRET_TITLE_FIELD_ID
     } = form_constants
+    const { auth } = this.props
+    if( !auth.uid ) return <Redirect to= { path_constants.DASHBOARD_PATH } />
     const { fields } = this.state
     const fieldList = fields.map( field => {
           return (
@@ -101,10 +104,15 @@ class CreateSecret extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    auth: state.firebase.auth
+  }
+}
 const mapDispatchToProps = dispatch => {
   return {
-    createSecret: (secret) => dispatch(createSecret(secret))
+    createSecret: (secret, id) => dispatch(createSecret(secret, id))
   }
 }
 
-export default connect(null, mapDispatchToProps)(CreateSecret)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateSecret)

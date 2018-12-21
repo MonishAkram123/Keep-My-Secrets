@@ -49,3 +49,10 @@ export const action_constants = {
   SIGNUP_ERROR: 'SIGNUP_ERROR'
 
 }
+
+export const firebase_constants = {
+
+  ROOT_SECRET_COLLECTION: 'secrets',
+  INDIVIDUAL_SECRET_COLLECTION: 'secretList',
+  USER_PROFILE_COLLECTION: 'users'
+}
