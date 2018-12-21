@@ -9,6 +9,7 @@ const Dashboard = ({ auth }) => {
 }
 
 const mapStateToProps = state => {
+  console.log('DashBoard', state);
   return {
     auth: state.firebase.auth
   }
