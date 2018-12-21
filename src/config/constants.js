@@ -37,7 +37,7 @@ export const form_constants = {
 export const action_constants = {
 
   CREATE_SECRET: 'CREATE_SECRET',
-  CREAT_SECRET_ERROR: 'CREATE_SECRET_ERROR',
+  CREATE_SECRET_ERROR: 'CREATE_SECRET_ERROR',
 
   LOGIN_SUCCESS: 'LOGIN_SUCCESS',
   LOGIN_ERROR: 'LOGIN_ERROR',

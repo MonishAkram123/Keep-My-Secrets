@@ -6,7 +6,7 @@ const initState = {
 const secretReducer = (state = initState, action) => {
   switch( action.type) {
     case CREATE_SECRET:
-      state.secrets.push({ id: state.secrets.length +1, ...action.secret })
+      console.log('secretReducer-Sucess:')
       return state;
     default:
       return state;

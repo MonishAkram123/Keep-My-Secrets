@@ -1,4 +1,5 @@
 import { form_constants, action_constants } from '../../config/constants'
+import { actionTypes } from 'react-redux-firebase'
 const { EMAIL_FIELD_ID, PASSWORD_FIELD_ID,
         FIRSTNAME_FIELD_ID, LASTNAME_FIELD_ID,
         PHONE_FIELD_ID } = form_constants
@@ -22,9 +23,10 @@ export const signIn = credentials => {
 export const signOut = () => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
+    console.log(actionTypes);
     firebase.auth().signOut()
       .then( () => {
-        dispatch({ type: SIGNOUT_SUCCESS })
+        dispatch({ type: actionTypes.LOGOUT })
       }).catch( err => {
         dispatch({ type: SIGNOUT_ERROR, err})
       })
