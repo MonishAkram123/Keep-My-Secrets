@@ -12,6 +12,7 @@ export const path_constants = {
 }
 
 export const form_constants = {
+  AUTH: 'auth',
   LABEL_EMAIL: 'Email',
   EMAIL_FIELD_ID: 'email',
 
@@ -36,6 +37,15 @@ export const form_constants = {
 export const action_constants = {
 
   CREATE_SECRET: 'CREATE_SECRET',
-  CREAT_SECRET_ERROR: 'CREATE_SECRET_ERROR'
-  
+  CREAT_SECRET_ERROR: 'CREATE_SECRET_ERROR',
+
+  LOGIN_SUCCESS: 'LOGIN_SUCCESS',
+  LOGIN_ERROR: 'LOGIN_ERROR',
+
+  SIGNOUT_SUCCESS: 'SIGNOUT_SUCCESS',
+  SIGNOUT_ERROR: 'SIGNOUT_ERROR',
+
+  SIGNUP_SUCCESS: 'SIGNUP_SUCCESS',
+  SIGNUP_ERROR: 'SIGNUP_ERROR'
+
 }

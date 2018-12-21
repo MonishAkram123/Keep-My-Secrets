@@ -29,6 +29,7 @@ form h3 {
   padding-top: 150px;
   font-size: 14pt;
   font-weight: 400;
+  word-wrap: break-word
 }
 .secret-list {
   margin-top: 100px;

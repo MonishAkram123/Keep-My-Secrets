@@ -6,6 +6,7 @@ class SecretList extends Component {
 
   render() {
     const { secrets } = this.props
+    // console.log(secrett)
     const secretList = secrets.length ? (
         <Collapsible popout >
           {
