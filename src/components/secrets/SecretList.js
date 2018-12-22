@@ -41,7 +41,7 @@ class SecretList extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('called', state);
+  console.log(state.firestore.ordered);
   let secrets = [];
   if(state.firestore.ordered[ROOT_SECRET_COLLECTION])
     secrets = state.firestore.ordered[ROOT_SECRET_COLLECTION][0][INDIVIDUAL_SECRET_COLLECTION]
