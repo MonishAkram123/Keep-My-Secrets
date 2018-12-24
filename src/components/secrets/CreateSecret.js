@@ -1,8 +1,21 @@
 import React, { Component } from 'react'
-import { form_constants, path_constants } from '../../config/constants'
+import { form_constants, route_constants } from '../../config/constants'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { createSecret } from '../../store/actions/secretActions'
+
+const {
+  LABEL_SECRET_TITLE,
+  SECRET_TITLE_FIELD_ID,
+  HEAD_CREATE_SECRET,
+  CREATE_SECRET_BUTTON,
+  SECRET_FIELDS_ARRAY,
+  ADD_FIELD_BUTTON,
+  FIELD_NAME,
+  FIELD_VALUE,
+  FIELD_ID
+} = form_constants
+
 class CreateSecret extends Component {
   state = {
     secretTitle: '',
@@ -35,29 +48,27 @@ class CreateSecret extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     let secret = {
-      title: '',
-      fields: []
+      [SECRET_TITLE_FIELD_ID]: '',
+      [SECRET_FIELDS_ARRAY]: []
     }
     const { fields } = this.state
     fields.map( field => {
-      let id = field.id
-      let name = document.getElementById(field.name).value
-      let value = document.getElementById(field.value).value
-      secret.fields.push({ id, name, value })
+      let new_field = {
+        [FIELD_ID]: field.id,
+        [FIELD_NAME]: document.getElementById(field.name).value,
+        [FIELD_VALUE]: document.getElementById(field.value).value
+      }
+      secret.fields.push(new_field)
       return null
     })
     secret.title = document.getElementById('title').value
     this.props.createSecret(secret, this.props.auth.uid );
-    this.props.history.push(path_constants.DASHBOARD_PATH)
+    this.props.history.push(route_constants.DASHBOARD_ROUTE)
   }
 
   render() {
-    const {
-      LABEL_SECRET_TITLE,
-      SECRET_TITLE_FIELD_ID
-    } = form_constants
     const { auth } = this.props
-    if( !auth.uid ) return <Redirect to= { path_constants.DASHBOARD_PATH } />
+    if( !auth.uid ) return <Redirect to= { route_constants.DASHBOARD_ROUTE } />
     const { fields } = this.state
     const fieldList = fields.map( field => {
           return (
@@ -86,15 +97,15 @@ class CreateSecret extends Component {
         <div className="row">
           <div className="col s12 m10 l8 offset-m1 offset-l2">
             <form onSubmit= { this.handleSubmit }>
-              <h3 className="blue-text center">Create Secret</h3>
+              <h3 className="teal-text darken-4 center">{ HEAD_CREATE_SECRET }</h3>
               <div className="input-field">
                 <label htmlFor={ SECRET_TITLE_FIELD_ID }>{ LABEL_SECRET_TITLE }</label>
                 <input type="text" id={ SECRET_TITLE_FIELD_ID } required />
               </div>
               { fieldList }
-              <button className="btn" onClick = { this.addField }>ADD FIELD</button>
+              <button className="btn" onClick = { this.addField }>{ ADD_FIELD_BUTTON }</button>
               <div className="input-field">
-                  <button className="btn btn-wide">ADD</button>
+                  <button className="btn btn-wide">{ CREATE_SECRET_BUTTON }</button>
               </div>
             </form>
           </div>

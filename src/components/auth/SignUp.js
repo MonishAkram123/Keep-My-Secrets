@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { signUp } from '../../store/actions/authActions'
-import { form_constants, path_constants } from '../../config/constants'
+import { form_constants, route_constants } from '../../config/constants'
 
 const {
   LABEL_EMAIL,
@@ -16,7 +16,9 @@ const {
   LABEL_LASTNAME,
   LASTNAME_FIELD_ID,
   LABEL_PHONE,
-  PHONE_FIELD_ID
+  PHONE_FIELD_ID,
+  LABEL_SIGNUP_BUTTON,
+  HEAD_SIGNUP_FORM
 } = form_constants;
 
 class SignUp extends Component {
@@ -47,15 +49,15 @@ class SignUp extends Component {
   }
 
   render() {
-    const { AUTH, SIGNUP_ERROR } = this.props
-    if( AUTH.uid )
-      return <Redirect to={ path_constants.DASHBOARD_PATH } />
+    const { auth, SIGNUP_ERROR } = this.props
+    if( auth.uid )
+      return <Redirect to={ route_constants.DASHBOARD_ROUTE } />
     return (
       <div className="container">
           <div className="row">
             <div className="col s12 m10 l8 offset-m1 offset-l2">
               <form onSubmit={ this.handleSubmit }>
-                <h3 className="blue-text">Sign up</h3>
+                <h3 className="teal-text darken-4">{ HEAD_SIGNUP_FORM }</h3>
                 <div className="row">
                   <div className="input-field col s6">
                       <label htmlFor={ FIRSTNAME_FIELD_ID }>{ LABEL_FIRSTNAME }</label>
@@ -86,7 +88,7 @@ class SignUp extends Component {
                 </div>
                   <p className="red-text center">{ this.state.wrongPassword }</p>
                   <p className="red-text center">{ SIGNUP_ERROR }</p>
-                  <button className="btn input-field btn-wide">LOGIN</button>
+                  <button className="btn input-field btn-wide">{ LABEL_SIGNUP_BUTTON }</button>
               </form>
             </div>
           </div>
@@ -104,7 +106,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     SIGNUP_ERROR: state.auth.SIGNUP_ERROR,
-    AUTH: state.firebase.auth
+    auth: state.firebase.auth
   }
 }
 

@@ -1,17 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { path_constants } from '../../config/constants'
+import { route_constants } from '../../config/constants'
 import SignedInLinks from './SignedInLinks'
-import SignedOutLinks from './SignedOutLinks'
 const Navbar = ({ auth }) => {
-  const { DASHBOARD_PATH } = path_constants
+  const { DASHBOARD_ROUTE } = route_constants
   return (
-    <nav className="nav-wrapper darken-4">
+    <nav className="nav-wrapper cyan darken-3">
       <div className="container">
-        <Link to={ DASHBOARD_PATH } className="brand-logo hide-on-med-and-down left">Keep It Secret</Link>
-          { auth.uid ? <SignedInLinks />: <SignedOutLinks /> }
-    </div>
+        <Link to={ DASHBOARD_ROUTE } className="brand-logo hide-on-med-and-down center">Keep My Secrets</Link>
+        <Link to={ DASHBOARD_ROUTE } className="brand-logo hide-on-large-only left">Keep My Secrets</Link>
+          { auth.uid ? <SignedInLinks />: null }
+      </div>
     </nav>
   )
 }

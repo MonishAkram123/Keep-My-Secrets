@@ -2,14 +2,17 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
-import { path_constants } from '../../config/constants'
+import { route_constants } from '../../config/constants'
+
+const { PROFILE_ROUTE, CREATE_SECRET_ROUTE } = route_constants
+
 const SignedInLinks = (props) => {
-  const { PROFILE_PATH, CREATE_SECRET_PATH } = path_constants
+  const { profile } = props
   return (
     <ul className="right">
-      <li><NavLink to= { CREATE_SECRET_PATH }>+Add Secret</NavLink></li>
+      <li><NavLink to= { CREATE_SECRET_ROUTE }>+Add Secret</NavLink></li>
       <li><a onClick= { props.signOut }>Log out</a></li>
-      <li><NavLink to={ PROFILE_PATH } className="btn btn-floating pink lighten-3">NN</NavLink></li>
+      <li><NavLink to={ PROFILE_ROUTE } className="btn btn-floating cyan darken-5 z-depth-0">{ profile.initials }</NavLink></li>
     </ul>
   )
 }
@@ -18,4 +21,11 @@ const mapDispatchToProps = dispatch => {
     signOut: () => dispatch(signOut())
   }
 }
-export default connect(null, mapDispatchToProps)(SignedInLinks)
+
+const mapStateToProps = state => {
+  return {
+    profile: state.firebase.profile
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignedInLinks)

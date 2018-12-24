@@ -8,7 +8,7 @@ class SecretSummary extends Component {
             fields.map( field => {
               return (
                   <span className="secret row" key={ field.id }>
-                    <span className="col s4">{ field.name }</span>
+                    <span className="col s3 offset-s1">{ field.name }</span>
                     <span className="col s8">{ field.value }</span>
                   </span>
               )

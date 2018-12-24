@@ -22,8 +22,9 @@ form h3 {
   padding-bottom:10px;
 }
 
+
 .btn-wide {
-  width: 100%
+  width: 100%;
 }
 .secret {
   padding-top: 150px;
@@ -43,6 +44,24 @@ form h3 {
   top: 0px;
   right: 0px;
 }
+
+.join-us {
+  margin-top: 15%;
+  margin-bottom: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.join-us-link {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.material-icons {
+  cursor:pointer
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

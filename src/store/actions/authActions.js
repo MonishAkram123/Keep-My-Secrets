@@ -1,4 +1,4 @@
-import { form_constants, action_constants } from '../../config/constants'
+import { form_constants, action_constants, firebase_constants } from '../../config/constants'
 import { actionTypes } from 'redux-firestore'
 const { EMAIL_FIELD_ID, PASSWORD_FIELD_ID,
         FIRSTNAME_FIELD_ID, LASTNAME_FIELD_ID,
@@ -41,11 +41,11 @@ export const signUp = newUser => {
       newUser[EMAIL_FIELD_ID],
       newUser[PASSWORD_FIELD_ID]
     ).then( resp => {
-      firestore.collection('users').doc(resp.user.uid).set({
-        [newUser[FIRSTNAME_FIELD_ID]]: newUser[FIRSTNAME_FIELD_ID],
-        [newUser[LASTNAME_FIELD_ID]]: newUser[LASTNAME_FIELD_ID],
-        [newUser[EMAIL_FIELD_ID]]: newUser[EMAIL_FIELD_ID],
-        [newUser[PHONE_FIELD_ID]]: newUser[PHONE_FIELD_ID],
+      firestore.collection(firebase_constants.USER_PROFILE_COLLECTION).doc(resp.user.uid).set({
+        [FIRSTNAME_FIELD_ID]: newUser[FIRSTNAME_FIELD_ID],
+        [LASTNAME_FIELD_ID]: newUser[LASTNAME_FIELD_ID],
+        [EMAIL_FIELD_ID]: newUser[EMAIL_FIELD_ID],
+        [PHONE_FIELD_ID]: newUser[PHONE_FIELD_ID],
         initials: newUser[FIRSTNAME_FIELD_ID][0] +newUser[LASTNAME_FIELD_ID][0]
       })
         .then( () => {
