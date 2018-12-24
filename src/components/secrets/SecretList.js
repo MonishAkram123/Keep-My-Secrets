@@ -22,7 +22,7 @@ class SecretList extends Component {
           {
             secrets.map(secret => {
               return (
-                <CollapsibleItem className="white card-title" header={ secret[SECRET_TITLE_FIELD_ID] } key={ secret.id }>
+                <CollapsibleItem icon="enhanced_encryption" className="white card-title" header={ secret[SECRET_TITLE_FIELD_ID] } key={ secret.id }>
                   <div className="row">
                     <div className="col s12 cyna offset-s11">
                       <i className="material-icons" onClick={() => { this.removeItem(secret.id) } }>{ "delete" }</i>

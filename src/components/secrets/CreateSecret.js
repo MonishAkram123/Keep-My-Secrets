@@ -75,7 +75,7 @@ class CreateSecret extends Component {
             <div className="row" key={ field.id }>
               <div className="input-field col s4">
                 <label htmlFor={ field.name }>Name</label>
-                <input type="text" maxLength="15" id={ field.name } required />
+                <input type="text" maxLength="25" id={ field.name } required />
               </div>
               <div className="input-field col s8">
                 {
@@ -86,7 +86,7 @@ class CreateSecret extends Component {
                   ) : ( null )
                 }
                 <label htmlFor={ field.value }>Value</label>
-                <input type="text" maxLength="15" id={ field.value } required />
+                <input type="text" maxLength="30" id={ field.value } required />
               </div>
 
             </div>
