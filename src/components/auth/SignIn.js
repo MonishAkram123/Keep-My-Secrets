@@ -30,7 +30,7 @@ class SignIn extends Component {
       <div className="container">
           <div className="row">
             <div className="col s12 m10 l8 offset-m1 offset-l2">
-              <form onSubmit= { this.handleSubmit }>
+              <form className="z-depth-4" onSubmit= { this.handleSubmit }>
                 <h3 className="teal-text darken-4">{ HEAD_SIGNIN_FORM }</h3>
                 <div className="input-field">
                     <label htmlFor={ EMAIL_FIELD_ID }>{ LABEL_EMAIL }</label>
@@ -38,7 +38,7 @@ class SignIn extends Component {
                 </div>
                 <div className="input-field">
                     <label htmlFor={ PASSWORD_FIELD_ID }>{ LABEL_PASSWORD }</label>
-                    <input type="password" id={ PASSWORD_FIELD_ID } onChange={ this.handleChange } required />
+                    <input type="password" maxLength="20" id={ PASSWORD_FIELD_ID } onChange={ this.handleChange } required />
                 </div>
                   <button className="btn input-field btn-wide">{ LABEL_SIGNIN_BUTTON }</button>
                   <p className="center red-text">{ LOGIN_ERROR }</p>

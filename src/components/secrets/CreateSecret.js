@@ -75,7 +75,7 @@ class CreateSecret extends Component {
             <div className="row" key={ field.id }>
               <div className="input-field col s4">
                 <label htmlFor={ field.name }>Name</label>
-                <input type="text" id={ field.name } required />
+                <input type="text" maxLength="15" id={ field.name } required />
               </div>
               <div className="input-field col s8">
                 {
@@ -86,7 +86,7 @@ class CreateSecret extends Component {
                   ) : ( null )
                 }
                 <label htmlFor={ field.value }>Value</label>
-                <input type="text" id={ field.value } required />
+                <input type="text" maxLength="15" id={ field.value } required />
               </div>
 
             </div>
@@ -96,11 +96,11 @@ class CreateSecret extends Component {
       <div className="container">
         <div className="row">
           <div className="col s12 m10 l8 offset-m1 offset-l2">
-            <form onSubmit= { this.handleSubmit }>
+            <form className="z-depth-4" onSubmit= { this.handleSubmit }>
               <h3 className="teal-text darken-4 center">{ HEAD_CREATE_SECRET }</h3>
               <div className="input-field">
                 <label htmlFor={ SECRET_TITLE_FIELD_ID }>{ LABEL_SECRET_TITLE }</label>
-                <input type="text" id={ SECRET_TITLE_FIELD_ID } required />
+                <input type="text" id={ SECRET_TITLE_FIELD_ID } maxLength="35" required />
               </div>
               { fieldList }
               <button className="btn" onClick = { this.addField }>{ ADD_FIELD_BUTTON }</button>

@@ -56,16 +56,16 @@ class SignUp extends Component {
       <div className="container">
           <div className="row">
             <div className="col s12 m10 l8 offset-m1 offset-l2">
-              <form onSubmit={ this.handleSubmit }>
+              <form  className="z-depth-4" onSubmit={ this.handleSubmit }>
                 <h3 className="teal-text darken-4">{ HEAD_SIGNUP_FORM }</h3>
                 <div className="row">
                   <div className="input-field col s6">
                       <label htmlFor={ FIRSTNAME_FIELD_ID }>{ LABEL_FIRSTNAME }</label>
-                      <input type="text" id={ FIRSTNAME_FIELD_ID } onChange={ this.handleChange } required />
+                      <input type="text" pattern="[A-Za-z]{1,20}\.{0,1}" maxLength="20" id={ FIRSTNAME_FIELD_ID } onChange={ this.handleChange } required />
                   </div>
                   <div className="input-field col s6">
                       <label htmlFor={ LASTNAME_FIELD_ID }>{ LABEL_LASTNAME }</label>
-                      <input type="text" id={ LASTNAME_FIELD_ID } onChange={ this.handleChange } required />
+                      <input type="text" id={ LASTNAME_FIELD_ID } maxLength="20" onChange={ this.handleChange } required />
                   </div>
                 </div>
                 <div className="input-field">
@@ -79,11 +79,11 @@ class SignUp extends Component {
                 <div className="row">
                   <div className="input-field col s6">
                       <label htmlFor={ PASSWORD_FIELD_ID }>{ LABEL_PASSWORD }</label>
-                      <input type="password" id={ PASSWORD_FIELD_ID } onChange={ this.handleChange } required />
+                      <input type="password" id={ PASSWORD_FIELD_ID } maxLength="20" onChange={ this.handleChange } required />
                   </div>
                   <div className="input-field col s6">
                       <label htmlFor={ CONFIRM_PASSWORD_FIELD_ID }>{ LABEL_CONFIRM_PASSWORD }</label>
-                      <input type="password" id={ CONFIRM_PASSWORD_FIELD_ID } onChange={ this.handleChange } required />
+                      <input type="password" id={ CONFIRM_PASSWORD_FIELD_ID } maxLength="20" onChange={ this.handleChange } required />
                   </div>
                 </div>
                   <p className="red-text center">{ this.state.wrongPassword }</p>
